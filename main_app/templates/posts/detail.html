@@ -1,0 +1,19 @@
+{% block 'base.html' %}
+
+<h2>{{ post.title }}</h2>
+
+{% block content %}
+
+<small>
+    {{ post.created_on.date }} | Categories:
+    {% for category in post.categories.all %}
+        <a href="{% url 'post_category' category.name %}">
+            {{ category.name }}
+        </a>
+    {% endfor %}
+</small>
+<p>{{ post.body | linebreaks }}</p>
+
+
+
+{% endblock %}
